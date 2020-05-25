@@ -1,4 +1,4 @@
-# Guestbook App
+# Guestbook App - EC2 Deployment
 
 ## Credits
 This code mainly comes from this repository https://github.com/ysl/guestbook - with very small changes.
