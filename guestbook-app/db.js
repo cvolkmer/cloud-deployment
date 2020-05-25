@@ -1,11 +1,9 @@
-var cfg = require('nconf');
-cfg.argv().file({ file: "conf/guestbook.json" });
 var mysql = require('mysql');
 var db_config = {
-    host: (process.env.db_info && process.env.db_info.host) || cfg.get('db:host'),
-    user: (process.env.db_info && process.env.db_info.username) || cfg.get('db:user'),
-    password: (process.env.db_info && process.env.db_info.password) || cfg.get('db:password'),
-    database: (process.env.db_info && process.env.db_info.database) || cfg.get('db:database')
+    host: (process.env.DB_HOST),
+    user: (process.env.DB_USER),
+    password: (process.env.DB_PASSWORD),
+    database: (process.env.DB_NAME)
 };
 
 var connection;
