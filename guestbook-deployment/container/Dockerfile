@@ -10,7 +10,7 @@ RUN echo "Downloading app"
 RUN git clone https://github.com/cvolkmer/cloud-deployment.git /home/cloud-deployment
 
 # Run npm to install packages
-RUN echo "Installing app*
+RUN echo "Installing app"
 RUN cp /home/cloud-deployment/guestbook-app/package*.json /
 RUN npm install -d
 
