@@ -1,2 +1,0 @@
-# Guestbook App - Container deployment
-
