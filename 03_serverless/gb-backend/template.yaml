@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  gb-backend
+
+  Sample SAM Template for gb-backend
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+  Api:
+    EndpointConfiguration: REGIONAL
+    OpenApiVersion: 3.0.1
+    Cors:
+      AllowMethods: "'OPTIONS,POST,PUT,DELETE'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
+
+Resources:
+
+  GetRecordsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/
+      Handler: getrecords.lambdaHandler
+      Runtime: nodejs12.x
+      Policies:
+        - CloudWatchPutMetricPolicy: {}
+        - VPCAccessPolicy: {}
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /messages
+            Method: get
+
+  InsertRecordFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/
+      Handler: insertrecord.lambdaHandler
+      Runtime: nodejs12.x
+      Policies:
+        - CloudWatchPutMetricPolicy: {}
+        - VPCAccessPolicy: {}
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /messages
+            Method: post
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  GuestbookApi:
+    Description: "API Gateway endpoint URL for Prod stage for Guestbook Sample Application"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/messages"
+  GetRecordsFunction:
+    Description: "Get records Lambda Function ARN"
+    Value: !GetAtt GetRecordsFunction.Arn
+  GetRecordsFunctionIamRole:
+    Description: "Implicit IAM Role created for get records function"
+    Value: !GetAtt GetRecordsFunction.Arn
+  InsertRecordFunction:
+    Description: "Insert repord Lambda Function ARN"
+    Value: !GetAtt InsertRecordFunction.Arn
+  InsertRecordFunctionIamRole:
+    Description: "Implicit IAM Role created for insert record function"
+    Value: !GetAtt InsertRecordFunction.Arn

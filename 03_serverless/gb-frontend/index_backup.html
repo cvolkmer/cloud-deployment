@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+</head>
+<body onload="performGetRequest()">
+    <div class="jumbotron">
+        <h1>Guestbook Demo</h1>
+        <h4>Test Front-End to query Guestbook API</h4>
+    </div>
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">GET Request</div>
+            <div class="panel-body">
+                <button class="btn btn-primary" onclick="performGetRequest()">Get Messages</button>
+                <button class="btn btn-warning" onclick="clearOutput()">Clear</button>
+                <div class="panel-body" id="getResult1"></div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="messageName">Name</div>
+                <div class="panel-body">
+                    <div class="messageText" id="messageText">Message</div>
+                    <div class="messageDate" id="messageDate">Date</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">POST Request</div>
+            <div class="panel-body">
+                <form class="form-inline" id="gbInputForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="messageName" placeholder="Name ...">
+                        <input type="text" class="form-control" id="messageText" placeholder="Message Text ...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+                <button class="btn btn-warning" onclick="clearOutput()">Clear</button>
+                <div class="panel-body" id="postResult"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    </body>
+</html>

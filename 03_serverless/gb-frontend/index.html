@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+</head>
+<body onload="performGetRequest()">
+    <div class="jumbotron">
+        <center><h2>Guestbook Demo</h2></center>
+    </div>
+    <div class="container">
+        <div class="panel-body" id="getResult1"></div>
+
+        <hr>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Add a new comment</div>
+            <div class="panel-body">
+                <form class="form-inline" id="gbInputForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="messageName" placeholder="Name ...">
+                        <input type="text" class="form-control" id="messageText" placeholder="Message Text ...">
+                    </div>
+                    <button type="button" id="performPost" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-warning" onclick="clearOutput()">Clear</button>
+                </form>
+                <div class="panel-body" id="postResult"></div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    </body>
+</html>
