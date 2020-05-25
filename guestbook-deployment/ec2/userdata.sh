@@ -36,7 +36,6 @@ npm install
 # Deploy DB and schema
 sudo systemctl start mariadb
 sudo mysqladmin -u root password "chips"
-#sudo mysql --user=root --password=chips
 sudo mysql -h localhost -u root -pchips -e "CREATE DATABASE demo"
 sudo mysql -h localhost -u root -pchips demo < database/schema_init.sql
 
