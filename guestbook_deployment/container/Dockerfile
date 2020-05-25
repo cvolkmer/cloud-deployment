@@ -20,15 +20,15 @@ RUN echo "Deploying app"
 RUN cd /home/ec2-user/
 
 # Deploy code
-RUN git clone -b container https://github.com/cvolkmer/DEV-WORKSHOP.git /home/ec2-user/DEV-WORKSHOP
+RUN git clone https://github.com/cvolkmer/cloud-deployment.git /home/ec2-user/cloud-deployment
 
 # Install npm packages
 USER root
-RUN cd /home/ec2-user/DEV-WORKSHOP/guestbook-nodejs/
+RUN cd /home/ec2-user/cloud-deployment/guestbook-app/
 RUN npm install
 
 # Start the app
-CMD ["node", "home/ec2-user/DEV-WORKSHOP/guestbook-nodejs/bin/www"]
+CMD ["node", "home/ec2-user/cloud-deployment/guestbook-app/bin/www"]
 
 EXPOSE 80
 

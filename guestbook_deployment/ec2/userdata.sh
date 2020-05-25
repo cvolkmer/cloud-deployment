@@ -26,14 +26,14 @@ sudo yum install -y git mysql mariadb-server
 cd /opt
 sudo mkdir dev
 cd dev/
-sudo git clone https://github.com/cvolkmer/DEV-WORKSHOP.git
+sudo git clone https://github.com/cvolkmer/cloud-deployment.git
 
 # Copy config file
-sudo cp /opt/dev/DEV-WORKSHOP/guestbook-nodejs/conf/guestbook.json.default /opt/dev/DEV-WORKSHOP/guestbook-nodejs/conf/guestbook.json
+sudo cp /opt/dev/cloud-deployment/guestbook-app/conf/guestbook.json.default /opt/dev/cloud-deployment/guestbook-app/conf/guestbook.json
 
 # Install npm packages
 sudo chown ec2-user:ec2-user /opt/dev/ -R
-cd /opt/dev/DEV-WORKSHOP/guestbook-nodejs/
+cd /opt/dev/cloud-deployment/guestbook-app/
 npm install
 
 # Deploy DB and schema
@@ -43,7 +43,7 @@ sudo mysql -h localhost -u root -pchips -e "CREATE DATABASE demo"
 sudo mysql -h localhost -u root -pchips demo < database/schema_init.sql
 
 # Start the app
-nohup sudo /opt/dev/DEV-WORKSHOP/guestbook-nodejs/bin/www > /tmp/server.log 2>&1 &
+nohup sudo /opt/dev/cloud-deployment/guestbook-app/bin/www > /tmp/server.log 2>&1 &
 EOF
  
 chown ec2-user:ec2-user /tmp/subscript.sh && chmod a+x /tmp/subscript.sh
