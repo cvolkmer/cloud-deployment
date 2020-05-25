@@ -25,7 +25,7 @@ RUN git clone https://github.com/cvolkmer/cloud-deployment.git /home/ec2-user/cl
 # Install npm packages
 USER root
 RUN cd /home/ec2-user/cloud-deployment/guestbook-app/
-# RUN npm init
+RUN cp /home/ec2-user/cloud-deployment/guestbook-app/package*.json /
 RUN npm install -d
 
 # Start the app
